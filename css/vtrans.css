@@ -1,3 +1,35 @@
 .statbox .pos-rel {
   position: relative;
 }
+
+@font-face {
+  font-family: 'ESRI Geometric Symbols';
+  src: url('../font/esri_3.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.esri {
+  display: inline-block;
+  position: relative;
+  padding: 5px 0 5px 35px;
+  color: #1d1d1b;
+  text-decoration: none;
+  *display: inline;
+  *zoom: 1;
+}
+.esri i:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font: 24px/1em 'ESRI Geometric Symbols';
+  font-style: normal;
+  color: #1d1d1b;
+}
+.esri.white i:before {
+  color: #fff;
+}
+
+.esri.xbucks i:before {
+  content: "\u00CF";
+}
