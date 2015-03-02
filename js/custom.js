@@ -1162,6 +1162,152 @@ function charts() {
 
 	}
 
+	/* ---------- Chart with points ---------- */
+	if($("#stats-chart3").length)
+	{
+		var insp2014 = [[1,37], [2,50], [3,103], [4,35]];
+
+		var plot = $.plot($("#stats-chart3"),
+				[  {
+					data: insp2014,
+					label: "2014",
+					bars: { show: true,
+							fill: true,
+							barWidth: .75,
+							align: "center",
+							lineWidth: 5,
+					}
+				}
+				], {
+
+					grid: { hoverable: true,
+							clickable: true,
+							tickColor: "rgba(255,255,255,0.05)",
+							borderWidth: 0
+						},
+				legend: {
+								show: false,
+						},
+					colors: ["rgba(255,255,255,0.8)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.4)", "rgba(255,255,255,0.2)"],
+				xaxis: {ticks:[[1,"Poor"], [2,"Fair"], [3,"Good"], [4,"Excellent"]],  color: "rgba(255,255,255,0.8)",
+
+
+				},
+					yaxis: {ticks:5, tickDecimals: 0, color: "rgba(255,255,255,0.8)" },
+				});
+
+
+		function showTooltip(x, y, contents) {
+			$('<div id="tooltip">' + contents + '</div>').css( {
+				position: 'absolute',
+				display: 'none',
+				top: y + 5,
+				left: x + 5,
+				border: '1px solid #fdd',
+				padding: '2px',
+				'background-color': '#dfeffc',
+				opacity: 0.80
+			}).appendTo("body").fadeIn(200);
+		}
+
+		var previousPoint = null;
+		$("#stats-chart3").bind("plothover", function (event, pos, item) {
+			$("#x").text(pos.x.toFixed(2));
+			$("#y").text(pos.y.toFixed(2));
+
+				if (item) {
+					if (previousPoint != item.dataIndex) {
+						previousPoint = item.dataIndex;
+
+						$("#tooltip").remove();
+						var x = item.datapoint[0].toFixed(0),
+							y = item.datapoint[1].toFixed(0);
+
+						showTooltip(item.pageX, item.pageY,
+									item.series.label + ": " + y + " xings");
+					}
+				}
+				else {
+					$("#tooltip").remove();
+					previousPoint = null;
+				}
+		});
+
+	}
+
+	/* ---------- Chart with points ---------- */
+	if($("#stats-chart4").length)
+	{
+		var insp2014 = [[1,150], [2,250], [3,303], [4,135]];
+
+		var plot = $.plot($("#stats-chart4"),
+				[  {
+					data: insp2014,
+					label: "2014",
+					bars: { show: true,
+							fill: true,
+							barWidth: .75,
+							align: "center",
+							lineWidth: 5,
+					}
+				}
+				], {
+
+					grid: { hoverable: true,
+							clickable: true,
+							tickColor: "rgba(255,255,255,0.05)",
+							borderWidth: 0
+						},
+				legend: {
+								show: false,
+						},
+					colors: ["rgba(255,255,255,0.8)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.4)", "rgba(255,255,255,0.2)"],
+				xaxis: {ticks:[[1,"Poor"], [2,"Fair"], [3,"Good"], [4,"Excellent"]],  color: "rgba(255,255,255,0.8)",
+
+
+				},
+					yaxis: {ticks:5, tickDecimals: 0, color: "rgba(255,255,255,0.8)" },
+				});
+
+
+		function showTooltip(x, y, contents) {
+			$('<div id="tooltip">' + contents + '</div>').css( {
+				position: 'absolute',
+				display: 'none',
+				top: y + 5,
+				left: x + 5,
+				border: '1px solid #fdd',
+				padding: '2px',
+				'background-color': '#dfeffc',
+				opacity: 0.80
+			}).appendTo("body").fadeIn(200);
+		}
+
+		var previousPoint = null;
+		$("#stats-chart4").bind("plothover", function (event, pos, item) {
+			$("#x").text(pos.x.toFixed(2));
+			$("#y").text(pos.y.toFixed(2));
+
+				if (item) {
+					if (previousPoint != item.dataIndex) {
+						previousPoint = item.dataIndex;
+
+						$("#tooltip").remove();
+						var x = item.datapoint[0].toFixed(0),
+							y = item.datapoint[1].toFixed(0);
+
+						showTooltip(item.pageX, item.pageY,
+									item.series.label + ": " + y + " signs");
+					}
+				}
+				else {
+					$("#tooltip").remove();
+					previousPoint = null;
+				}
+		});
+
+	}
+
 	function randNumFB(){
 		return ((Math.floor( Math.random()* (1+40-20) ) ) + 20);
 	}
@@ -1169,10 +1315,10 @@ function charts() {
 	/* ---------- Chart with points ---------- */
 	if($("#facebookChart").length)
 	{
-		var likes = [[1, 5+randNumFB()], [2, 10+randNumFB()], [3, 15+randNumFB()], [4, 20+randNumFB()],[5, 25+randNumFB()],[6, 30+randNumFB()],[7, 35+randNumFB()],[8, 40+randNumFB()],[9, 45+randNumFB()],[10, 50+randNumFB()],[11, 55+randNumFB()],[12, 60+randNumFB()],[13, 65+randNumFB()],[14, 70+randNumFB()],[15, 75+randNumFB()],[16, 80+randNumFB()],[17, 85+randNumFB()],[18, 90+randNumFB()],[19, 85+randNumFB()],[20, 80+randNumFB()],[21, 75+randNumFB()],[22, 80+randNumFB()],[23, 75+randNumFB()],[24, 70+randNumFB()],[25, 65+randNumFB()],[26, 75+randNumFB()],[27,80+randNumFB()],[28, 85+randNumFB()],[29, 90+randNumFB()], [30, 95+randNumFB()]];
+		var xings = [[1,40],[2,50],[3,34],[4,55],[5,40],[6,50],[7,34],[8,55],[9,40],[10,50],[11,34],[12,55]];
 
 		var plot = $.plot($("#facebookChart"),
-			   [ { data: likes, label: "Fans"} ], {
+			   [ { data: xings, label: "Crossings"} ], {
 				   series: {
 					   lines: { show: true,
 								lineWidth: 2,
@@ -1220,7 +1366,7 @@ function charts() {
 							y = item.datapoint[1].toFixed(2);
 
 						showTooltip(item.pageX, item.pageY,
-									item.series.label + " of " + x + " = " + y);
+									item.series.label + " = " + y);
 					}
 				}
 				else {
@@ -1238,10 +1384,10 @@ function charts() {
 	/* ---------- Chart with points ---------- */
 	if($("#twitterChart").length)
 	{
-		var followers = [[1, 5+randNumTW()], [2, 10+randNumTW()], [3, 15+randNumTW()], [4, 20+randNumTW()],[5, 25+randNumTW()],[6, 30+randNumTW()],[7, 35+randNumTW()],[8, 40+randNumTW()],[9, 45+randNumTW()],[10, 50+randNumTW()],[11, 55+randNumTW()],[12, 60+randNumTW()],[13, 65+randNumTW()],[14, 70+randNumTW()],[15, 75+randNumTW()],[16, 80+randNumTW()],[17, 85+randNumTW()],[18, 90+randNumTW()],[19, 85+randNumTW()],[20, 80+randNumTW()],[21, 75+randNumTW()],[22, 80+randNumTW()],[23, 75+randNumTW()],[24, 70+randNumTW()],[25, 65+randNumTW()],[26, 75+randNumTW()],[27,80+randNumTW()],[28, 85+randNumTW()],[29, 90+randNumTW()], [30, 95+randNumTW()]];
+		var signs = [[1,40],[2,50],[3,34],[4,55],[5,40],[6,50],[7,34],[8,55],[9,40],[10,50],[11,34],[12,55]];
 
 		var plot = $.plot($("#twitterChart"),
-			   [ { data: followers, label: "Followers"} ], {
+			   [ { data: signs, label: "Signs"} ], {
 				   series: {
 					   lines: { show: true,
 								lineWidth: 2,
