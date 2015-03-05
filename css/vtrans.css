@@ -33,3 +33,18 @@
 .esri.xbucks i:before {
   content: "\u00CF";
 }
+
+.glyphicons.small {
+  padding-left: 22px;
+}
+
+
+.glyphicons.snowflake.white.small i:before {
+  vertical-align: inherit;
+  margin-top: -4px;
+  padding-top: 3px;
+  font-size: 16px;
+  left: 3px;
+  margin-bottom: -4px;
+  padding-bottom: 3px;
+}
